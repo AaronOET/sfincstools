@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.1
+
+- Added the **sfincstools** command (also `python -m sfincstools`): `-v` / `--version` prints the package version; with no arguments it lists the available tools.
+
 ## 0.1.0
 
 - First release of the `sfincstools` package, with two command-line tools:

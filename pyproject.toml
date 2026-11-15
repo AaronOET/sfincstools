@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "sfincstools"
-version = "0.1.0"
+version = "0.1.1"
 authors = [
     { name = "aaronchh", email = "aaronhsu219@gmail.com" },
 ]
@@ -29,5 +29,6 @@ include = ["sfincstools*"]
 Homepage = "https://github.com/AaronOET/sfincstools"
 
 [project.scripts]
+sfincstools = "sfincstools.__main__:main"  # Show the package version and list the tools
 sfpgs = "sfincstools.sfpgs:main"  # Check the progress of a SFINCS run
 sfcfg = "sfincstools.sfcfg:main"  # Display the configuration of a SFINCS model
