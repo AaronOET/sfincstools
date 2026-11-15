@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sfincstools"
+version = "0.1.0"
+authors = [
+    { name = "aaronchh", email = "aaronhsu219@gmail.com" },
+]
+description = "Command-line tools for inspecting and monitoring SFINCS models"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.8"
+dependencies = [
+    "numpy>=1.20.0",
+    "netCDF4>=1.5.0",
+    "matplotlib>=3.4.0",
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+
+[tool.setuptools.packages.find]
+include = ["sfincstools*"]
+
+[project.urls]
+Homepage = "https://github.com/AaronOET/sfincstools"
+
+[project.scripts]
+sfpgs = "sfincstools.sfpgs:main"  # Check the progress of a SFINCS run
+sfcfg = "sfincstools.sfcfg:main"  # Display the configuration of a SFINCS model
