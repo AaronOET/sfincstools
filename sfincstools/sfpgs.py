@@ -124,12 +124,16 @@ def report(model_dir, stall_min):
     return log['status']
 
 
-def main(argv=None):
+def build_parser():
     ap = argparse.ArgumentParser(prog='sfpgs', description='Check the progress of a SFINCS run')
-    ap.add_argument('model_dir', nargs='?', default='.')
+    ap.add_argument('model_dir', nargs='?', default='.', help='folder with sfincs.inp (default: current folder)')
     ap.add_argument('--watch', type=float, default=0, help='refresh interval in seconds (0 = once)')
     ap.add_argument('--stall', type=float, default=10, help='minutes without log updates before warning')
-    a = ap.parse_args(argv)
+    return ap
+
+
+def main(argv=None):
+    a = build_parser().parse_args(argv)
     if not os.path.exists(os.path.join(a.model_dir, 'sfincs.inp')):
         sys.exit(f'no sfincs.inp in {a.model_dir}')
     while True:

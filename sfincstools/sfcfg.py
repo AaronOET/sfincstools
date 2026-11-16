@@ -603,12 +603,16 @@ def plot(model_dir, inp, data, save=None):
 
 
 # --------------------------------------------------------------------------- #
-def main(argv=None):
+def build_parser():
     ap = argparse.ArgumentParser(prog='sfcfg', description='Display the configuration of a SFINCS model.')
-    ap.add_argument('model_dir', nargs='?', default='.')
+    ap.add_argument('model_dir', nargs='?', default='.', help='folder with sfincs.inp (default: current folder)')
     ap.add_argument('--plot', action='store_true', help='show a map and forcing time series')
     ap.add_argument('--save', help='save the figure to this file (implies --plot)')
-    args = ap.parse_args(argv)
+    return ap
+
+
+def main(argv=None):
+    args = build_parser().parse_args(argv)
 
     inp_path = os.path.join(args.model_dir, 'sfincs.inp')
     if not os.path.exists(inp_path):

@@ -2,6 +2,7 @@
 sfincstools - command-line tools for SFINCS models.
 
   sfincstools -v / --version   show the package version
+  sfincstools -h / --help      list the tools with a short description
   sfincstools                  list the available tools
 """
 import argparse
@@ -14,14 +15,24 @@ TOOLS = (
 )
 
 
+def tools_usage():
+    """one line per tool: name and description"""
+    out = ['tools:']
+    for name, desc in TOOLS:
+        out.append(f'  {name:7s} {desc}')
+    out.append("\nrun '<tool> -h' for help on a tool")
+    return '\n'.join(out)
+
+
 def main(argv=None):
-    ap = argparse.ArgumentParser(prog='sfincstools', description='Command-line tools for SFINCS models.')
+    ap = argparse.ArgumentParser(prog='sfincstools', description='Command-line tools for SFINCS models.',
+                                 epilog=tools_usage(), formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument('-v', '--version', action='version', version=f'%(prog)s {__version__}')
     ap.parse_args(argv)
     print(f'sfincstools {__version__}\n\navailable tools:')
     for name, desc in TOOLS:
         print(f'  {name:7s} {desc}')
-    print("\nrun '<tool> -h' for help on a tool")
+    print("\nrun 'sfincstools -h' or '<tool> -h' for help on a tool")
 
 
 if __name__ == '__main__':

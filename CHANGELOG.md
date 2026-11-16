@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.2
+
+- **sfincstools**: `-h` / `--help` now lists the tools with a short description.
+- **sfpgs**, **sfcfg**: `-h` now explains `MODEL_DIR` (folder with `sfincs.inp`, default: current folder). New Python API: `build_parser()` returns the tool's argument parser.
+
 ## 0.1.1
 
 - Added the **sfincstools** command (also `python -m sfincstools`): `-v` / `--version` prints the package version; with no arguments it lists the available tools.
